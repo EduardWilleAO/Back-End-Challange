@@ -19,6 +19,7 @@ $result = $stmt->fetchAll();
         <?php foreach($result as $row){ ?>
             <span>
                 <?php echo $row["id"] . " " . $row["name"]; ?>
+                <a href="update.php?id=<?php echo $row['id']; ?>" type="button" class="btn-primary">Edit</a>
                 <a href="delete.php?id=<?php echo $row['id']; ?>" type="button" class="btn-danger">Delete</a>
             </span>
             <br>
