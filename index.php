@@ -15,16 +15,17 @@ $result = $stmt->fetchAll();
 </head>
 <body>
     <div id="content_container">
-
         <?php foreach($result as $row){ ?>
-            <span>
-                <?php echo $row["id"] . " " . $row["name"]; ?>
-                <a href="update.php?id=<?php echo $row['id']; ?>" type="button" class="btn-primary">Edit</a>
-                <a href="delete.php?id=<?php echo $row['id']; ?>" type="button" class="btn-danger">Delete</a>
-            </span>
-            <br>
-        <?php } ?>
+            <div class="item_container">
+                <div>
+                    <label><b><?php print $row["name"]; ?></b></label><br><br>
+                    <label>Tasks: <br><?php print $row["tasks"]; ?></label>
+                </div>
 
+                <a href="update.php?id=<?php print $row['id']; ?>" type="button" class="btn-primary">Edit</a>
+                <a href="delete.php?id=<?php print $row['id']; ?>" type="button" class="btn-danger">Delete</a>
+            </div>
+        <?php } ?>
     </div>
     <a href="create.php" type="button" class="btn-primary">Add Item!</a>
 </body>

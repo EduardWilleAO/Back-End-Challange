@@ -2,22 +2,25 @@
 
 require "connect.php";
 
-$sql = 'SELECT * FROM list';
+$id = $_GET["id"];
+$name = $_POST["name"];
+$tasks = $_POST["tasks"];
+
+$sql = 'SELECT * FROM list WHERE id=:id';
 $stmt = $conn->prepare($sql);
+$stmt->BindParam(":id", $id);
 $stmt->execute();
 $result = $stmt->fetchAll();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $id = $_GET["id"];
-    $name = $_POST["name"];
-
-    $sql = "UPDATE list SET name=:name WHERE id='$id'";
+    $sql = "UPDATE list SET name=:name, tasks=:tasks WHERE id=:id";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $id);
     $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":tasks", $tasks);
     $stmt->execute();
     header("Location: index.php");
 }
-
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -28,10 +31,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <body>
     <form method="post">
         <?php foreach($result as $value){ ?>
-            <h2>Editing: "<?php echo $value["name"]; ?>"?</h2>
+            <h2>Editing: "<?php print $value["name"]; ?>"?</h2>
             <label>Name:</label>
-            <input name="name" type="text" placeholder="enter new name"><br>
-            <button type="submit" name="button" class="btn-primary">Save changes for "<?php echo $value["name"]; ?>"</button>
+            <input name="name" type="text" value="<?php print $value['name']; ?>"><br>
+            <label>Tasks:</label>
+            <textarea name="tasks" type="text"><?php print $value['tasks']; ?></textarea><br>
+            <button type="submit" name="button" class="btn-primary">Save changes for "<?php print $value["name"]; ?>"</button>
         <?php } ?>
     </form>
 </body>

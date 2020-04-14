@@ -26,8 +26,8 @@ $result = $conn->query($sql);
 <body>
     <form method="post">
         <?php foreach($result as $value){ ?>
-            <h2>Are you sure you want to delete "<?php echo $value["name"]; ?>"?</h2>
-            <button type="submit" name="button" class="btn-danger">Delete "<?php echo $value["name"]; ?>"</button>
+            <h2>Are you sure you want to delete "<?php print $value["name"]; ?>"?</h2>
+            <button type="submit" name="button" class="btn-danger">Delete "<?php print $value["name"]; ?>"</button>
         <?php } ?>
     </form>
 </body>
