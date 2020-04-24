@@ -1,3 +1,18 @@
+* {
+    font-family: "Verdana", Geneva, sans-serif;
+    font-size: 20px;
+}
+
+.grid_container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    width: 80%;
+}
+
+.grid-item {
+
+}
+
 a, button {
     background-color: lightgray;
     border: none;
@@ -28,7 +43,6 @@ button {
     color: white;
 }
 
-* {
-    font-family: "Verdana", Geneva, sans-serif;
-    font-size: 20px;
+.float-right {
+    float: right;
 }

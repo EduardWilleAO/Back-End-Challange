@@ -16,13 +16,14 @@ $conn = null;
     <title></title>
 </head>
 <body>
-    <div id="content_container">
+    <div class="grid_container">
         <?php foreach($result as $row){ ?>
-            <div class="item_container">
-                <label>List Name: <b><?php print $row["name"]; ?></b></label>
-                <a href="tasks/tasks.php?id=<?php print $row['id']; ?>" type="button" class="btn-success">See Tasks</a>
-                <a href="update.php?id=<?php print $row['id']; ?>" type="button" class="btn-primary">Edit</a>
-                <a href="delete.php?id=<?php print $row['id']; ?>" type="button" class="btn-danger">Delete</a>
+            <div class="grid-item"><label>List Name: <b><?php print $row["name"]; ?></b></label></div>
+            <div class="grid-item">Task numbers: 0</div>
+            <div class="grid-item">
+                <a href="tasks/tasks.php?id=<?php print $row['id']; ?>" type="button" class="btn-success float-right">See Tasks</a>
+                <a href="update.php?id=<?php print $row['id']; ?>" type="button" class="btn-primary float-right">Edit</a>
+                <a href="delete.php?id=<?php print $row['id']; ?>" type="button" class="btn-danger float-right">Delete</a>
             </div>
         <?php } ?>
     </div>
