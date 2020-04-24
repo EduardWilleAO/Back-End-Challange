@@ -2,25 +2,25 @@
 
 require "connect.php";
 
-$id = $_GET["id"];
-$name = $_POST["name"];
-$tasks = $_POST["tasks"];
-
 $sql = 'SELECT * FROM list WHERE id=:id';
 $stmt = $conn->prepare($sql);
-$stmt->BindParam(":id", $id);
+$stmt->BindParam(":id", $_GET["id"]);
 $stmt->execute();
 $result = $stmt->fetchAll();
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $sql = "UPDATE list SET name=:name, tasks=:tasks WHERE id=:id";
+    $sql = "UPDATE list SET name=:name WHERE id=:id";
     $stmt = $conn->prepare($sql);
-    $stmt->bindParam(":id", $id);
-    $stmt->bindParam(":name", $name);
-    $stmt->bindParam(":tasks", $tasks);
+    $stmt->bindParam(":id", $_GET["id"]);
+    $stmt->bindParam(":name", $_POST["name"]);
     $stmt->execute();
+
+    $conn = null;
+
     header("Location: index.php");
 }
+
+$conn = null;
 ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -2,19 +2,24 @@
 
 require "connect.php";
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $id = $_GET["id"];
+$sql = 'SELECT * FROM list WHERE id=:id';
+$stmt = $conn->prepare($sql);
+$stmt->BindParam(":id", $_GET["id"]);
+$stmt->execute();
+$result = $stmt->fetchAll();
 
-    $sql = "DELETE FROM list WHERE id='$id'";
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $sql = "DELETE FROM list WHERE id=:id";
     $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":id", $_GET["id"]);
     $stmt->execute();
+
+    $conn = null;
+
     header("Location: index.php");
 }
 
-$id = $_GET["id"];
-
-$sql = "SELECT * FROM list WHERE id='$id'";
-$result = $conn->query($sql);
+$conn = null;
 
 ?>
 
