@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	$conn = null;
 
-	header ('Location: index.php');
+	header ('Location: tasks.php?id='.$_GET["id"]);
 }
 
 $conn = null;
@@ -52,5 +52,7 @@ $conn = null;
 
         <input type="submit">
     </form>
+
+    <a href="tasks.php?id=<?php print $_GET['id']; ?>" type="button" class="btn-danger">Go Back</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<?php 
+    <?php 
 
 require "connect.php";
 
@@ -39,5 +39,7 @@ $conn = null;
             <button type="submit" name="button" class="btn-primary">Save changes for "<?php print $value["name"]; ?>"</button>
         <?php } ?>
     </form>
+
+    <a href="index.php" type="button" class="btn-danger">Go Back</a>
 </body>
 </html>

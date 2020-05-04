@@ -35,5 +35,7 @@ $conn = null;
             <button type="submit" name="button" class="btn-danger">Delete "<?php print $value["name"]; ?>"</button>
         <?php } ?>
     </form>
+
+    <a href="index.php" type="button" class="btn-danger">Go Back</a>
 </body>
 </html>

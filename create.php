@@ -28,5 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 		</div>
 		<button type="submit" name="button" class="btn btn-primary">Submit</button>
 	</form>	
+
+	<a href="index.php" type="button" class="btn-danger">Go Back</a>
 </body>
 </html>

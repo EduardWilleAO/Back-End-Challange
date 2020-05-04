@@ -38,6 +38,7 @@ $conn = null;
     <?php } ?>
 
     <?php foreach($result as $row){ ?>
+        <a href="../index.php" type="button" class="btn-danger">Go Back</a>
         <a href="newTask.php?id=<?php print $row["id"]; ?>" type="button" class="btn-primary">Add Task</a>
     <?php } ?>
 </body>
