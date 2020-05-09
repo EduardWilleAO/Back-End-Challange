@@ -1,6 +1,7 @@
 <?php
 
 require "connect.php";
+require "modal/modal.php";
 
 $sql = 'SELECT * FROM list';
 $stmt = $conn->prepare($sql);
@@ -18,15 +19,7 @@ $result = $stmt->fetchAll();
         <?php foreach($result as $row) { ?>
             <div class="grid-item"><label>List Name: <b><?php print $row["name"]; ?></b></label></div>
 
-            <?php 
-            $sql = 'SELECT * FROM tasks WHERE binding_id=:id';
-            $stmt = $conn->prepare($sql);
-            $stmt->bindParam(":id", $row["id"]);
-            $stmt->execute();
-            $result2 = $stmt->fetchAll();
-            ?>
-
-            <div class="grid-item">Task numbers: <?php print count($result2); ?></div>
+            <div class="grid-item">Task numbers: <?php getTaskAmount($conn, $row["id"]); ?></div>
 
             <div class="grid-item">
                 <a href="tasks/tasks.php?id=<?php print $row['id']; ?>" type="button" class="btn-success float-right">See Tasks</a>
